@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 public abstract class Character {
     private int hp;
     private int power;
-    // private KickStrategy kickStrategy;
+    // private KickStrategy kickStrategy
     public abstract void kick(Character oponent);
     
     public boolean isAlive(){
