@@ -1,25 +1,10 @@
 package lotr;
-// import KickStrategy;
 
-public class Elf extends Character {
+import kick.BasicKick;
+import kick.ElfKick;
 
+public class Elf extends Character{
     public Elf() {
-        super(10,10);
+        super(10, 10, new ElfKick());
     }
-
-    @Override
-    public void kick(Character oponent){
-        if (this.getPower() < oponent.getPower()){
-            this.setPower(this.getPower()-1);
-        }
-        if (this.getPower() > oponent.getPower()) {
-            oponent.setHp(0);
-        }
-    }
-
-    @Override
-    public String toString(){
-        return "Elf{hp=" + this.getHp()+ ", power="+ this.getPower()+"}";
-    }
-
 }

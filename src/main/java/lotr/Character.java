@@ -1,29 +1,42 @@
 package lotr;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
+import kick.BasicKick;
 import lombok.AllArgsConstructor;
 
-@AllArgsConstructor @Getter @Setter @ToString
-public abstract class Character {
+@AllArgsConstructor
+public abstract class Character{
+
     private int hp;
     private int power;
-    // private KickStrategy kickStrategy
-    public abstract void kick(Character oponent);
-    
-    public boolean isAlive(){
-        return getHp() > 0;
+    private BasicKick kickType;
+
+    public void kick(Character c) {
+        kickType.kick(this, c);
+    }
+    public void setHp(int hp) {
+        if (hp >= 0)
+            this.hp = hp;
+        else
+            this.hp = 0;
     }
 
-    public int getHp(){
+    public int getPower() {
+        return power;
+    }
+
+    public boolean isAlive() {
+        return this.getHp() > 0;
+    }
+
+    public int getHp() {
         return hp;
     }
-
-    public void setHp(int hp){
-         this.hp = hp >0 ?hp :0;
+    public String toString() {
+        return this.getClass().getSimpleName() + "{hp=" + this.hp +
+                ", power=" + this.power + "}";
     }
-    
-    public String ToString(){
-        return this.getClass().getName()+"{hp=" + hp+ ", power="+ power+"}";
+
+    public void setPower(int power) {
+        this.power = power;
     }
 }
